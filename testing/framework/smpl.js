@@ -23,6 +23,10 @@ exports.describe = function(name, runnable) {
 		checkCondition(!expression, "expression wasn't false");
 	}
 
+	this.shouldBeA = function(prototype, instance) {
+		checkCondition(instance instanceof prototype, instance + " was not a " + prototype);
+	}
+
 	this.shouldBeEqual = function(expected, value) {
 		checkCondition(expected == value, expected + " didn't equal " + value);
 	}
