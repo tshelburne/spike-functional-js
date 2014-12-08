@@ -28,6 +28,20 @@ exports.describe = function(name, runnable) {
 		checkCondition(value == null, value + " was not null")
 	}
 
+	this.shouldThrowError = function(cb, msg) {
+		var errorThrown = false;
+		try {
+			cb();
+		}
+		catch (e) {
+			errorThrown = true;
+			if (msg !== undefined) {
+				this.shouldBeEqual(msg, e.message);
+			}
+		}
+		checkCondition(errorThrown, "error not thrown");
+	}
+
 	try {
 		runnable(this);
 		succeed(name);
