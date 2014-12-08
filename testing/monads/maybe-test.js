@@ -1,7 +1,7 @@
 var t = require('../framework/smpl')
   , Maybe = require('../../monads/maybe');
 
-t.describe('success', function(it) {
+t.describe('just', function(it) {
 	var accountOrNothing = deposit(500, new Account(0))
 									.bind( withdraw, 400 )
 									.bind( deposit, 300 )
@@ -10,7 +10,7 @@ t.describe('success', function(it) {
 	it.shouldBeEqual(300, Maybe.unwrap(accountOrNothing).amount);
 });
 
-t.describe('failure', function(it) {
+t.describe('nothing', function(it) {
 	var accountOrNothing = deposit(500, new Account(0))
 									.bind( withdraw, 400 )
 									.bind( deposit, 300 )

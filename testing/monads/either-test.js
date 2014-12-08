@@ -1,7 +1,7 @@
 var t = require('../framework/smpl')
   , Either = require('../../monads/either');
 
-t.describe('success', function(it) {
+t.describe('left', function(it) {
 	var accountOrError = deposit(500, new Account(0))
 								.bind( withdraw, 400 )
 								.bind( deposit, 300 )
@@ -10,7 +10,7 @@ t.describe('success', function(it) {
 	it.shouldBeEqual(300, Either.unwrap(accountOrError).amount);
 });
 
-t.describe('failure', function(it) {
+t.describe('right', function(it) {
 	var accountOrError = deposit(500, new Account(0))
 								.bind( withdraw, 400 )
 								.bind( deposit, 300 )
