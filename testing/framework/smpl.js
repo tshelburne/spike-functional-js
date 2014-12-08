@@ -8,6 +8,9 @@ succeed = function(name) {
 
 fail = function(name, error) {
 	console.log(name + " failed: " + error + ".");
+	if (error.stack) {
+		console.log(error.stack);
+	}
 }
 
 exports.describe = function(name, runnable) {
